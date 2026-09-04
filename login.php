@@ -39,7 +39,7 @@ if (!empty($_SESSION['admin_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Topup Alert Limited</title>
+    <title>Login | Topupalert Limited</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -49,9 +49,11 @@ if (!empty($_SESSION['admin_id'])) {
     <div class="auth-left">
         <div>
             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;">
-                <div style="width:48px;height:48px;background:linear-gradient(135deg,#14b8a6,#0f766e);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;">TA</div>
+                <div style="width:52px;height:52px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                    <img src="assets/img/logo-64.png" alt="Topupalert" style="width:100%;height:100%;object-fit:contain;">
+                </div>
                 <div>
-                    <div style="font-size:1.3rem;font-weight:700;">Topup Alert</div>
+                    <div style="font-size:1.3rem;font-weight:700;">Topupalert</div>
                     <div style="font-size:0.8rem;opacity:0.7;">Limited · Akure</div>
                 </div>
             </div>

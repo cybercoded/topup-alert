@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS customers (
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE,
     phone VARCHAR(20) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) DEFAULT NULL,
     state VARCHAR(50) DEFAULT 'Ondo',
     city VARCHAR(50) DEFAULT 'Akure',
     address TEXT,
@@ -129,3 +130,8 @@ INSERT INTO service_types (name, code, description, icon) VALUES
 ('Data Subscription', 'DATA', 'Internet data bundles for all networks', 'wifi'),
 ('Electricity Payment', 'ELECTRICITY', 'Pay electricity bills (BEDC, EKEDC, etc.)', 'bolt'),
 ('Cable TV Subscription', 'CABLE', 'DStv, GOtv, Startimes subscriptions', 'tv');
+
+-- Test Customer Account (password: user123)
+-- Login with phone: 08031234567  or email: testuser@topupalert.ng
+INSERT INTO customers (customer_code, first_name, last_name, email, phone, password_hash, state, city, address, wallet_balance, status) VALUES
+('CUS_TEST01', 'Tunde', 'Adebayo', 'testuser@topupalert.ng', '08031234567', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Ondo', 'Akure', '15 Adesida Road, Akure', 50000.00, 'active');

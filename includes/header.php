@@ -18,7 +18,7 @@ $currentPage = $currentPage ?? 'dashboard';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle) ?> | Topup Alert Limited</title>
+    <title><?= htmlspecialchars($pageTitle) ?> | Topupalert Limited</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -28,9 +28,9 @@ $currentPage = $currentPage ?? 'dashboard';
 <?php if ($isAdminPage): ?>
 <div class="sidebar">
     <div class="sidebar-brand">
-        <div class="logo">TA</div>
+        <div class="logo"><img src="<?= strpos($_SERVER['PHP_SELF'], '/admin/') !== false ? '../' : '' ?>assets/img/logo-64.png" alt="Topupalert"></div>
         <div>
-            <h1>Topup Alert</h1>
+            <h1>Topupalert</h1>
             <small>Digital Payments</small>
         </div>
     </div>
@@ -79,7 +79,7 @@ $currentPage = $currentPage ?? 'dashboard';
     <header class="topbar">
         <div class="topbar-left">
             <h2><?= htmlspecialchars($pageTitle) ?></h2>
-            <p>Topup Alert Limited · Akure, Nigeria</p>
+            <p>Topupalert Limited · Akure, Nigeria</p>
         </div>
         <div class="topbar-right">
             <div class="user-info">

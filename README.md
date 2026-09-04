@@ -5,10 +5,12 @@
 
 A fully functional demo of an automated digital services platform for:
 
-- Airtime top-ups (MTN, Airtel, Glo, 9mobile)
-- Internet data subscriptions
-- Electricity bill payments (BEDC, EKEDC, IKEDC, etc.)
-- Cable TV subscriptions (DStv, GOtv, Startimes)
+- **Airtime** top-ups (MTN, Airtel, Glo, 9mobile)
+- **Data** subscriptions (daily / weekly / monthly plans)
+- **Electricity** bill payments (BEDC, EKEDC, IKEDC, AEDC, PHED, JED, KEDCO)
+- **Cable TV** subscriptions (DStv, GOtv, Startimes)
+
+---
 
 ## Tech Stack
 
@@ -19,16 +21,29 @@ A fully functional demo of an automated digital services platform for:
 | Database    | MySQL 5.7+ / MariaDB |
 | Design      | Custom modern UI (Inter + Font Awesome) |
 
+---
+
 ## Features
 
-- Admin authentication
-- Customer management (200 seeded records)
-- KYC / Customer Applications workflow (200 seeded)
-- Transaction history & filtering (200 seeded)
-- Wallet balances in Nigerian Naira (₦)
-- Service breakdown dashboard
+### Customer Portal (`/user/`)
+- Login with test account
+- Wallet balance (₦50,000 starting balance)
+- Buy Airtime (all networks)
+- Buy Data bundles (network-specific plans)
+- Pay Electricity bills
+- Subscribe to DStv / GOtv / Startimes
+- Transaction history
+- Real-time wallet deduction
+
+### Admin Dashboard
+- Authentication
+- Customer management (200 seeded)
+- KYC / Applications workflow (200 seeded)
+- Transaction monitoring (200 seeded)
+- Service breakdown & stats
 - Search, filter & pagination
-- Responsive design
+
+---
 
 ## Quick Start
 
@@ -40,10 +55,7 @@ A fully functional demo of an automated digital services platform for:
 ### 2. Database Setup
 
 ```bash
-# Create database and tables
 mysql -u root -p < sql/schema.sql
-
-# Load 200 seed records each for customers, applications & transactions
 mysql -u root -p < sql/seed.sql
 ```
 
@@ -61,56 +73,59 @@ define('DB_PASS', '');
 ### 4. Run
 
 ```bash
-# Using PHP built-in server
 cd topup-alert
 php -S localhost:8000
 ```
 
 Open: **http://localhost:8000**
 
-### Demo Login
+---
 
-| Field    | Value     |
-|----------|-----------|
-| Username | `admin`   |
-| Password | `admin123`|
+## Login Credentials
+
+| Role     | Login                        | Password  | Notes                    |
+|----------|------------------------------|-----------|--------------------------|
+| Customer | `08031234567` or `testuser@topupalert.ng` | `user123` | Wallet: ₦50,000         |
+| Admin    | `admin`                      | `admin123`| Full dashboard access    |
+
+---
 
 ## Project Structure
 
 ```
 topup-alert/
-├── config/database.php      # DB connection & helpers
-├── includes/                # Header / Footer
-├── assets/css/style.css     # Full design system
-├── assets/js/main.js
+├── index.php                 # Landing page (Customer / Admin choice)
+├── login.php                 # Admin login
+├── dashboard.php             # Admin dashboard
+├── user/
+│   ├── login.php             # Customer login
+│   ├── dashboard.php         # Customer home + quick services
+│   ├── airtime.php           # Buy airtime
+│   ├── data.php              # Buy data bundles
+│   ├── electricity.php       # Pay electricity
+│   ├── cable.php             # Cable TV subscription
+│   ├── history.php           # Transaction history
+│   ├── process.php           # Payment processor
+│   └── includes/             # Customer header/footer
 ├── admin/
 │   ├── customers.php
 │   ├── applications.php
 │   └── transactions.php
 ├── sql/
-│   ├── schema.sql           # Tables + default admin + services
-│   └── seed.sql             # 200 customers + 200 apps + 200 txns
-├── login.php
-├── logout.php
-├── dashboard.php
-└── index.php
+│   ├── schema.sql            # Tables + test customer + services
+│   └── seed.sql              # 200 customers + apps + txns
+└── assets/
 ```
 
-## Seed Data Highlights
-
-- **Realistic Nigerian names** (Yoruba, Igbo, Hausa)
-- **Valid phone prefixes** (MTN, Airtel, Glo, 9mobile)
-- **States & cities** across Nigeria (focus on South-West + others)
-- **Naira amounts** for airtime, data plans, electricity, cable packages
-- **Transaction statuses**: successful / pending / failed / reversed
-- **Application statuses**: pending / under_review / approved / rejected
+---
 
 ## Notes
 
 - This is a **demo system** for portfolio / presentation purposes.
-- Payment gateway & third-party API integrations are simulated.
-- Password hashing uses bcrypt (demo accepts `admin123`).
+- Payment gateway & third-party API integrations are **simulated**.
+- Successful payments deduct from the customer wallet and create ledger entries.
+- Password hashing uses bcrypt (demo also accepts plain demo passwords).
 
 ---
 
-Built with care to reflect a real 2018–2020 Nigerian fintech product experience.
+Built to reflect a real 2018–2020 Nigerian fintech product experience.
